@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "autos",
+  "info": {
+    "name": "Auto",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "specs": {
+      "type": "richtext"
+    },
+    "users": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "autos"
+    },
+    "category": {
+      "via": "autos",
+      "model": "category"
+    },
+    "price": {
+      "type": "biginteger"
+    }
+  }
+}
